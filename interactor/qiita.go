@@ -3,12 +3,12 @@ package interactor
 import (
 	"github.com/ryomak/kurisuuu/domain"
 	"github.com/ryomak/kurisuuu/core"
+	"github.com/ryomak/kurisuuu/core/const_variable"
 )
 
 
 func ResQiitaArticles()([]domain.Qiita,error){
-	const url = "https://qiita.com/api/v2/users/ryoma0413/items"
-	return GetArticles(url)
+	return GetArticles(const_variable.QiitaUrl)
 }
 
 func GetArticles(url string)([]domain.Qiita,error){

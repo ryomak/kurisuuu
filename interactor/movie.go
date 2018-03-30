@@ -2,10 +2,10 @@ package interactor
 
 import (
 	"github.com/ryomak/kurisuuu/domain"
-	"os"
 	"io/ioutil"
 	"path/filepath"
 	"github.com/ryomak/kurisuuu/core"
+	"github.com/ryomak/kurisuuu/core/const_variable"
 )
 
 func ResMovies()([]domain.Movie,error){
@@ -13,8 +13,7 @@ func ResMovies()([]domain.Movie,error){
 }
 
 func GetMovies()([]domain.Movie,error){
-	moviePath := os.Getenv("GOPATH") + "/src/github.com/ryomak/kurisuuu/public/movie"
-	list, err := ioutil.ReadDir(moviePath)
+	list, err := ioutil.ReadDir(const_variable.MoviePath)
 	movies := make([]domain.Movie,0)
 	for _, fileInfo := range list {
 		movie := domain.Movie{

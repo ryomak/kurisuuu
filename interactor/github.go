@@ -3,12 +3,12 @@ package interactor
 import (
 "github.com/ryomak/kurisuuu/domain"
 "github.com/ryomak/kurisuuu/core"
+	"github.com/ryomak/kurisuuu/core/const_variable"
 )
 
 
 func ResGithubRepository()([]domain.GithubApi,error){
-	const url = "https://api.github.com/users/ryomak/repos?access_token=6f20caf8f0d8ea1bd27f8e175ffd0cbfd3ceb4c8"
-	return GetRepository(url)
+	return GetRepository(const_variable.GithubUrl)
 }
 
 func GetRepository(url string)([]domain.GithubApi,error){
