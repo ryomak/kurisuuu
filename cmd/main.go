@@ -1,11 +1,10 @@
 package main
 
 import (
-	"github.com/ryomak/kurisuuu/adapter"
+	"github.com/ryomak/kurisuuu/router"
 )
 
 func main() {
-	r := adapter.New()
-	r.Route()
-	r.Run("8080")
+	r := router.New()
+	r.Route("8080")
 }
