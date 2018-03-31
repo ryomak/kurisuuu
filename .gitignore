@@ -1,4 +1,6 @@
 public/movie/
+public/js/
 .idea
 bin/main
 core/const_variable/
+node_modules/

@@ -22,6 +22,7 @@ func New() *Router {
 }
 
 func (r *Router) Route(addr string) {
+	r.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("public"))))
 	r.HandleFunc("/", controller.Index)
 	//r.HandleFunc("/movies",controller.MovieHandler)
 	a := r.PathPrefix("/api").Subrouter()

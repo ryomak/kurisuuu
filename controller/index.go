@@ -3,13 +3,17 @@ package controller
 import (
 	"net/http"
 	"github.com/ryomak/kurisuuu/core"
+	"html/template"
 )
 
 func Index(w http.ResponseWriter, r *http.Request) {
 	device := core.SetDevice(r.UserAgent())
 	if device == "pc" {
-		http.ServeFile(w, r, "public/pc_index.html")
+		tmpl := template.Must(template.ParseFiles("./public/pc_index.html"))
+		tmpl.Execute(w, "")
 		return
 	}
-	http.ServeFile(w, r, "public/sp_index.html")
+	tmpl := template.Must(template.ParseFiles("./public/sp_index.html"))
+	tmpl.Execute(w,"")
 }
+
