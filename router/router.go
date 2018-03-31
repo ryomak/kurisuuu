@@ -1,13 +1,13 @@
 package router
 
 import (
-	"github.com/gorilla/mux"
-	"net/http"
 	"context"
+	"github.com/gorilla/mux"
 	"github.com/ryomak/kurisuuu/controller"
 	"github.com/urfave/negroni"
+	"log"
+	"net/http"
 )
-
 
 type Router struct {
 	*mux.Router
@@ -31,5 +31,7 @@ func (r *Router) Route(addr string) {
 	n := negroni.New()
 	n.Use(negroni.NewLogger())
 	n.UseHandler(r)
-	http.ListenAndServe(":"+addr,n)
+
+	log.Println("server start :" + addr)
+	http.ListenAndServe(":"+addr, n)
 }
