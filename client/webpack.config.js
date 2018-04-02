@@ -1,33 +1,80 @@
+
+var path = require('path')
+var webpack = require('webpack')
+
 module.exports = {
-  // モード値を production に設定すると最適化された状態で、
-  // development に設定するとソースマップ有効でJSファイルが出力される
-  mode: 'development',
- 
-  // メインとなるJavaScriptファイル（エントリーポイント）
-  entry: './src/main.ts',
-  // ファイルの出力設定
+  entry: './src/index.ts',
   output: {
-    //  出力ファイルのディレクトリ名
-    path: `${__dirname}/../public/js`,
-    // 出力ファイル名
-    filename: 'bundle.js'
+    path: path.resolve(__dirname+'/../public/js'),
+    publicPath: '/dist/',
+    filename: 'build.js'
   },
   module: {
     rules: [
       {
-        // 拡張子 .ts の場合
-        test: /\.ts(x?)$/,
-        // TypeScript をコンパイルする
-        use: 'ts-loader'
+        test: /\.vue$/,
+        loader: 'vue-loader',
+        options: {
+          loaders: {
+            // Since sass-loader (weirdly) has SCSS as its default parse mode, we map
+            // the "scss" and "sass" values for the lang attribute to the right configs here.
+            // other preprocessors should work out of the box, no loader config like this necessary.
+            'scss': 'vue-style-loader!css-loader!sass-loader',
+            'sass': 'vue-style-loader!css-loader!sass-loader?indentedSyntax',
+          }
+          // other vue-loader options go here
+        }
       },
+      {
+        test: /\.tsx?$/,
+        loader: 'ts-loader',
+        exclude: /node_modules/,
+        options: {
+          appendTsSuffixTo: [/\.vue$/],
+        }
+      },
+      {
+        test: /\.(png|jpg|gif|svg)$/,
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]?[hash]'
+        }
+      }
     ]
   },
-  // import 文で .ts ファイルを解決するため
   resolve: {
-    extensions: ['.ts','','.tsx'],
-    // Webpackで利用するときの設定
+    extensions: ['.ts', '.js', '.vue', '.json'],
     alias: {
-      vue: 'vue/dist/vue.js'
+      'vue$': 'vue/dist/vue.esm.js'
     }
-  }
-};
+  },
+  devServer: {
+    historyApiFallback: true,
+    noInfo: true
+  },
+  performance: {
+    hints: false
+  },
+  devtool: '#eval-source-map'
+}
+
+if (process.env.NODE_ENV === 'production') {
+  module.exports.devtool = '#source-map'
+  // http://vue-loader.vuejs.org/en/workflow/production.html
+  module.exports.plugins = (module.exports.plugins || []).concat([
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: '"production"'
+      }
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      sourceMap: true,
+      compress: {
+        warnings: false
+      }
+    }),
+    new webpack.LoaderOptionsPlugin({
+      minimize: true
+    })
+  ])
+}
