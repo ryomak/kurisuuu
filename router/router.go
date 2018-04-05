@@ -24,7 +24,7 @@ func New() *Router {
 func (r *Router) Route(addr string) {
 	r.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("public"))))
 	r.HandleFunc("/", controller.Index)
-	//r.HandleFunc("/movies",controller.MovieHandler)
+	r.NotFoundHandler = http.HandlerFunc(controller.Index)
 	a := r.PathPrefix("/api").Subrouter()
 	a.Path("/qiita").HandlerFunc(controller.GetQiita).Methods("GET")
 	a.Path("/github").HandlerFunc(controller.GetGithub).Methods("GET")

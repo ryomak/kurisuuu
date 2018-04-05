@@ -1,21 +1,19 @@
 import Vue from "vue";
-import HelloComponent from "./components/Hello.vue";
-import HelloDecoratorComponent from "./components/HelloDecorator.vue";
+import HeaderComponent from "./components/layouts/header_component.vue";
+import FooterComponent from "./components/layouts/footer_component.vue";
+import Readme from "./components/readme/readme.vue";
+import {createRouter} from "./router";
 
-let v = new Vue({
+new Vue({
     el: "#app",
-    template: `
-    <div>
-        Name: <input v-model="name" type="text">
-        <h1>Hello Component</h1>
-        <hello-component :name="name" :initialEnthusiasm="5" />
-        <h1>Hello Decorator Component</h1>
-        <hello-decorator-component :name="name" :initialEnthusiasm="5" />
-        </div>
-    `,
-    data: { name: "World" },
+    template: `<div>
+                <HeaderComponent/>
+                <router-view></router-view>
+                <FooterComponent/>
+               </div>`,
+    router:createRouter(),
     components: {
-        HelloComponent,
-        HelloDecoratorComponent
+        HeaderComponent,
+        FooterComponent
     }
 });
