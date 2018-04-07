@@ -2,6 +2,7 @@
     <div>
         <div v-for="item in list" >
             <a :href="item.url">
+                <img :src="getIconPath(item.language)">
                 <div>
                     {{item.name}}
                 </div>
@@ -25,6 +26,20 @@
                     this.list.push(new GithubList(el.name,el.language,el.html_url,el.updated_at))
                 })
             });
+        }
+        getIconPath(name:string){
+           switch (name){
+               case "":
+                   return  "/static/img/icon/language/Github.png"
+               case "C":
+                   return  "/static/img/icon/language/Github.png"
+               case "C++":
+                   return  "/static/img/icon/language/Github.png"
+               case "Objective-C":
+                   return  "/static/img/icon/language/Github.png"
+               default:
+                   return "/static/img/icon/language/"+name+".png"
+           }
         }
     };
 </script>

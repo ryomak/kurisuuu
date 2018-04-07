@@ -1,19 +1,14 @@
 import Vue from "vue";
-import HeaderComponent from "./components/layouts/header_component.vue";
-import FooterComponent from "./components/layouts/footer_component.vue";
-import Readme from "./components/readme/readme.vue";
+import Home from "./components/home.vue";
 import {createRouter} from "./router";
 
 new Vue({
     el: "#app",
     template: `<div>
-                <HeaderComponent/>
-                <router-view></router-view>
-                <FooterComponent/>
+                <home/>
                </div>`,
     router:createRouter(),
     components: {
-        HeaderComponent,
-        FooterComponent
+       Home
     }
 });

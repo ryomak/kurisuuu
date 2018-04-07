@@ -1,19 +1,16 @@
 <template>
     <div class="container">
-        <section class="card" v-for="item in list">
-                <video class="card-img" :name="item.name" preload="auto" controls :poster="item.imgPath">
+        <div class="card" v-for="item in list" :key="item.name">
+                <video class="card-img" :name="item.name" preload="metadata" :poster="item.imgPath">
                     <source :src="item.path" type="video/mp4"/>
                     <p>ご利用のブラウザはvideo タグによる動画の再生に対応していません。</p>
                 </video>
-            <div class="card-content">
-                <h1 class="card-title">{{item.name}}</h1>
-                <img :src="/static/">
-            </div>
+                <p class="card-title">{{item.name}}</p>
             <div class="card-link">
-                <a href="http://webcreatorbox.com/about">About</a>
+                <a :href="item.path">Play</a>
                 <a href="http://webcreatorbox.com/">Website</a>
             </div>
-        </section>
+        </div>
     </div>
 </template>
 
@@ -37,56 +34,66 @@
         next(){
             console.log("next");
         }
-        getIconPath(name:string){
-            return "/static/"
-        }
     };
 </script>
 
 <style scoped lang="scss">
-    .container{
+    .container {
         display: flex;
-        flex-flow: column wrap;
-        justify-content:center;
+        flex-wrap: wrap;
+        justify-content: space-around;
     }
     .card {
+        display: flex;
         width: 350px;
         background: #fff;
-        border-radius: 5px;
-        box-shadow: 0 2px 5px #ccc;
-        display: inline-flex;
+        border-radius: 10px;
+        box-shadow: 10px 10px 10px darkgreen;
+        flex-direction: column;
+        padding: 6px;
     }
+
     .card-img {
-        border-radius: 5px 5px 0 0;
+        display: flex;
+        border-radius: 10px;
         max-width: 100%;
         height: auto;
     }
+
     .card-content {
         padding: 20px;
     }
+
     .card-title {
         font-size: 20px;
         margin-bottom: 20px;
         text-align: center;
         color: #333;
     }
+
     .card-text {
         color: #777;
         font-size: 14px;
         line-height: 1.5;
     }
+
     .card-link {
         text-align: center;
         border-top: 1px solid #eee;
         padding: 20px;
     }
+
     .card-link a {
         text-decoration: none;
+        justify-content: space-around;
         color: #0bd;
         margin: 0 10px;
     }
+
     .card-link a:hover {
         color: #0090aa;
     }
-
+    html, css{
+        touch-action:none;
+    }
 </style>
