@@ -24,6 +24,10 @@ func GetNameBySnakeCase(in string)string{
 }
 
 func RemoveExtension(str string)string{
+
 	index := strings.LastIndexAny(str,".")
+	if index <0 {
+		return str
+	}
 	return str[:index]
 }

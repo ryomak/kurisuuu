@@ -18,7 +18,8 @@ func GetMovies()([]domain.Movie,error){
 	for _, fileInfo := range list {
 		movie := domain.Movie{
 			Name:core.RemoveExtension(core.GetNameBySnakeCase(fileInfo.Name())),
-			Path:filepath.Join("public/movie",fileInfo.Name()),
+			Path:filepath.Join("/static/movie",fileInfo.Name()),
+			ImgPath:filepath.Join("/static/img/poster",core.RemoveExtension(fileInfo.Name())+".png"),
 		}
 		movies = append(movies,movie)
 	}
