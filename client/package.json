@@ -18,7 +18,8 @@
     "vue": "^2.5.2",
     "vue-class-component": "^6.0.0",
     "vue-property-decorator": "^6.0.0",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "vue-video-player": "^5.0.2"
   },
   "devDependencies": {
     "axios": "^0.18.0",

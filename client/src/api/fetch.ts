@@ -1,15 +1,15 @@
 
 import axios from "axios"
-import QiitaList from './../models/QiitaList'
 
 export  class Fetch{
-   getQiita():QiitaList[]{
-       var list:QiitaList[]=[];
-       axios.get(`/api/qiita`,{}).then((res:any) => {
-           res.data.map((el:any)=> {
-               list.push(new QiitaList(el.id,el.title,el.body,el.url,el.created_at))
-           })
-       });
-       return list;
-   }
+    fetchMovie():any {
+        return axios.get(`/api/movie`, {})
+    }
+    fetchQiita():any{
+        return axios.get(`/api/qiita`, {})
+    }
+
+    fetchGithub():any{
+        return axios.get(`/api/github`,{})
+    }
 }

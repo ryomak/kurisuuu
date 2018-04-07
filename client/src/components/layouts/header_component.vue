@@ -1,7 +1,7 @@
 <template>
     <div>
-        <ul>
-            <li v-for="link in links" :key="link.path">
+        <ul class="container">
+            <li v-for="link in links" :key="link.path" class="menu">
                 <router-link :to="link.path">{{link.name}}</router-link>
             </li>
         </ul>
@@ -27,5 +27,12 @@
 </script>
 
 <style scoped>
+    .container{
+        display: flex;
+        justify-content:center;
+    }
+    .menu{
+        display: inline-flex;
+    }
 
 </style>

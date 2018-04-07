@@ -20,7 +20,11 @@
        constructor(){
            super();
            let f = new Fetch;
-           this.list = f.getQiita();
+           f.fetchQiita().then((res:any) => {
+               res.data.map((el:any)=> {
+                   this.list.push(new QiitaList(el.id,el.title,el.body,el.url,el.created_at))
+               })
+           });
        }
     };
 </script>
