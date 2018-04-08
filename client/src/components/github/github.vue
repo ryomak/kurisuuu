@@ -1,12 +1,12 @@
 <template>
     <div class="container">
-        <a class="card" :href="item.url" v-for="item in list" >
+        <div class="card" v-on:click="goGithub(item.url)" v-for="item in list" >
                 <div class="card-title">{{item.name}}</div>
                 <div class="card-foot">
                     <img :src="getIconPath(item.language)">
                     <div class="card-time">{{item.updatedAt}}</div>
                 </div>
-        </a>
+        </div>
     </div>
 </template>
 
@@ -42,6 +42,10 @@
                    return "/static/img/icon/language/"+name+".png";
            }
         }
+        goGithub(url :string){
+            location.href = url;
+        }
+
     };
 </script>
 
@@ -84,7 +88,6 @@
     .card-link a {
         text-decoration: none;
         justify-content: space-around;
-        color: #0bd;
         margin: 0 10px;
     }
 
