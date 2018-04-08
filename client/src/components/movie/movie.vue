@@ -5,7 +5,7 @@
                 <p class="card-title">{{item.name}}</p>
             <div class="card-link">
                 <a :href="item.path">Play</a>
-                <a
+                <div @click="modal.showModal"></div>
             </div>
         </div>
     </div>
@@ -14,13 +14,15 @@
 <script lang="ts">
     import { Vue, Component, Prop } from "vue-property-decorator";
     import {Fetch} from "../../api/fetch"
+    import MovieModal from "../modal/movie_modal.vue";
     import MovieList  from './../../models/MovieList'
     @Component
     export default class Movie extends Vue{
         list  = [] as MovieList[];
         constructor(){
-            super();
+            super(); 
             let f = new Fetch;
+            let modal = new MovieModal;
             f.fetchMovie().then((res:any)=>{
                 res.data.map((el:any)=> {
                     this.list.push(new MovieList(el.name,el.movie_path,el.image_path));

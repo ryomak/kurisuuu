@@ -1,14 +1,12 @@
 <template>
     <div class="container">
-        <div class="card" v-for="item in list" >
-            <div :href="item.url">
+        <a class="card" :href="item.url" v-for="item in list" >
                 <div class="card-title">{{item.name}}</div>
                 <div class="card-foot">
                     <img :src="getIconPath(item.language)">
                     <div class="card-time">{{item.updatedAt}}</div>
                 </div>
-            </div>
-        </div>
+        </a>
     </div>
 </template>
 
