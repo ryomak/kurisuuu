@@ -56,7 +56,7 @@
 <style scoped>
     .container{
         display: flex;
-        justify-content:space-around;
+        justify-content:center;
         width: 100%;
         background-color: white;
     }
