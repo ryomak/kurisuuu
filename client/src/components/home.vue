@@ -22,7 +22,9 @@
 
 <style scoped>
 .home{
-    background-color: rgb(102,204,153);
-
+    margin: 0;         /* 余白の削除 */
+    padding: 0;        /* 余白の削除 */
+    width:100%;
+    height:100%;
 }
 </style>

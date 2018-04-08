@@ -1,14 +1,11 @@
 <template>
     <div class="container">
         <div class="card" v-for="item in list" :key="item.name">
-                <video class="card-img" :name="item.name" preload="metadata" :poster="item.imgPath">
-                    <source :src="item.path" type="video/mp4"/>
-                    <p>ご利用のブラウザはvideo タグによる動画の再生に対応していません。</p>
-                </video>
+                <img class="card-img" :name="item.name" :src="item.imgPath">
                 <p class="card-title">{{item.name}}</p>
             <div class="card-link">
                 <a :href="item.path">Play</a>
-                <a href="http://webcreatorbox.com/">Website</a>
+                <a
             </div>
         </div>
     </div>
@@ -41,16 +38,17 @@
     .container {
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-around;
+        justify-content:center ;
     }
     .card {
         display: flex;
-        width: 350px;
+        width: 250px;
         background: #fff;
         border-radius: 10px;
-        box-shadow: 10px 10px 10px darkgreen;
+        box-shadow: 7px 7px rgb(49,103,69);
         flex-direction: column;
-        padding: 6px;
+        margin: 20px;
+        border:solid 2px rgb(49,103,69);
     }
 
     .card-img {
@@ -58,6 +56,8 @@
         border-radius: 10px;
         max-width: 100%;
         height: auto;
+        margin: 10px;
+        border: 2px solid #eee;
     }
 
     .card-content {
@@ -68,7 +68,7 @@
         font-size: 20px;
         margin-bottom: 20px;
         text-align: center;
-        color: #333;
+        color: rgb(49,103,69);
     }
 
     .card-text {
@@ -79,7 +79,7 @@
 
     .card-link {
         text-align: center;
-        border-top: 1px solid #eee;
+        border-top: 2px solid #eee;
         padding: 20px;
     }
 
@@ -91,8 +91,9 @@
     }
 
     .card-link a:hover {
-        color: #0090aa;
+        color:rgb(49,103,69);
     }
+
     html, css{
         touch-action:none;
     }

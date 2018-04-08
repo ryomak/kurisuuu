@@ -1,9 +1,9 @@
 <template>
-    <div class="footer">
+    <footer class="footer">
         <div class="icon" v-for="item in sns">
             <a :href="item[1]"><img class="icon-img" :src="getImgPath(item[0])"></a>
         </div>
-    </div>
+    </footer>
 </template>
 
 <script lang="ts">
@@ -27,27 +27,16 @@
     .footer {
         padding: 10px 0;
         display: flex;
-    }
-    .footer a {
-        color: #70726F;
-        font-size: 20px;
-        padding: 10px;
-        border-right: 1px solid #70726F;
-    }
-    .footer a:first-child {
-        border-left: 1px solid #70726F;
-    }
-    .footer a:hover {
-        color: white;
+        flex-direction : row-reverse;
+        bottom: 0;
+        width: 100%;
+        height: 100px;
     }
     .icon{
-        width: 100px;
-        height: 30px;
+      padding:10px;
     }
     .icon-img{
-        width:auto;
-        height:auto;
-        max-width:100%;
-        max-height:100%;
+        width: 60px;
+        height: 60px;
     }
 </style>

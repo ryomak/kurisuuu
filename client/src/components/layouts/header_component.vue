@@ -1,11 +1,11 @@
 <template>
     <div>
-        <div class="container">
+        <header class="container" v-bind:class="[position>50?'s-header': '']">
             <div v-for="(link,index) in links" :key="link.path" >
                 <router-link class="hover"  :to="link.path" v-if="index === getCurrent(path)">{{link.name}}</router-link>
                 <router-link class="menu" :to="link.path" v-else>{{link.name}}</router-link>
             </div>
-        </div>
+        </header>
     </div>
 </template>
 
@@ -18,6 +18,7 @@
     export default class HeaderComponent extends Vue{
         links :Link[];
         current:number;
+        position:any;
         constructor(){
             super();
             this.links = [
@@ -26,6 +27,8 @@
                 new Link("ぎぶはぶ","/github"),
                 new Link("ど-が","/movie")
             ];
+            this.position = 0;
+            window.addEventListener('scroll', this.handleScroll);
             this.current = this.getCurrent(this.$parent.$route.path);
         }
 
@@ -43,35 +46,48 @@
                     return 100;
             }
         }
+
+        handleScroll(){
+            this.position = window.scrollY
+        }
     };
 </script>
 
 <style scoped>
     .container{
-        padding-top: 20px;
         display: flex;
-        justify-content:center;
+        justify-content:space-around;
+        width: 100%;
+        background-color: white;
+    }
+    .s-header{
+        position: fixed;
+        background-color: white;
+        transition-delay: 2s;
+        transition-property: position;
     }
 
     .menu{
         padding:20px;
-        font-size: 40px;
+        font-size: 20px;
         border-radius: 10px;
         display: inline-flex;
         background-color: white;
         color: rgb(49,103,69);
-        box-shadow: 5px 10px rgb(49,103,69);
+        box-shadow: 7px 7px rgb(49,103,69);
         margin: 20px 10px;
+        border:solid 2px rgb(49,103,69);
+        text-decoration: none;
     }
 
     .hover{
         padding:20px;
-        font-size: 40px;
+        font-size: 25px;
         border-radius: 10px;
         display: inline-flex;
         background-color:  rgb(49,103,69);
         color: white;
         margin: 20px 10px;
+        text-decoration: none;
     }
-
 </style>

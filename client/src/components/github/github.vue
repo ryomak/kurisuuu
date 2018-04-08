@@ -30,15 +30,17 @@
         getIconPath(name:string){
            switch (name){
                case "":
-                   return  "/static/img/icon/language/Github.png"
+                   return  "/static/img/icon/language/Github.png";
                case "C":
-                   return  "/static/img/icon/language/Github.png"
+                   return  "/static/img/icon/language/Github.png";
                case "C++":
-                   return  "/static/img/icon/language/Github.png"
+                   return  "/static/img/icon/language/Github.png";
                case "Objective-C":
-                   return  "/static/img/icon/language/Github.png"
+                   return  "/static/img/icon/language/Github.png";
+               case "Vue":
+                   return "/static/img/icon/language/Github.png";
                default:
-                   return "/static/img/icon/language/"+name+".png"
+                   return "/static/img/icon/language/"+name+".png";
            }
         }
     };
