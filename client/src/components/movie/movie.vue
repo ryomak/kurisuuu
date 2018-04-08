@@ -5,7 +5,6 @@
                 <p class="card-title">{{item.name}}</p>
             <div class="card-link">
                 <a :href="item.path">Play</a>
-                <div @click="modal.showModal"></div>
             </div>
         </div>
     </div>
@@ -20,7 +19,7 @@
     export default class Movie extends Vue{
         list  = [] as MovieList[];
         constructor(){
-            super(); 
+            super();
             let f = new Fetch;
             let modal = new MovieModal;
             f.fetchMovie().then((res:any)=>{
