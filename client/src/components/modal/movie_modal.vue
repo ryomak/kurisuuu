@@ -1,9 +1,8 @@
 <template>
-    <transition name="modal">
-        <div class="modal-mask">
+    <transition name="modal" >
+        <div class="modal-mask" @click="$emit('close')">
             <div class="modal-wrapper">
                 <div class="modal-container">
-                    <img class="modal-close" src="/static/img/icon/modal/close.png" @click="$emit('close')">
                     <div class="modal-header">
                         <img class="modal-img" :src="detail.imgPath" >
                     </div>
@@ -40,9 +39,9 @@
         z-index: 9998;
         top: 0;
         left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(256, 256, 256, .5);
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(256, 256, 256, .6);
         display: table;
         transition: opacity .3s ease;
     }
@@ -53,14 +52,15 @@
     }
 
     .modal-container {
-        width: 300px;
+        width: 400px;
         margin: 0px auto;
         padding: 20px 30px;
         background-color: #fff;
         border-radius: 10px;
         box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
+        border:solid 2px rgb(49,103,69);
         transition: all .3s ease;
-        font-size: 15px;
+        font-size: 25px;
         font-family: "Wawati SC",sans-serif;
     }
 
