@@ -134,6 +134,17 @@
     html, css{
         touch-action:none;
     }
+
+    p{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content:center ;
+    }
+    .loading{
+        font-size: 30px;
+        color:rgb(49,103,69);
+    }
+
     /*transition*/
     .list-enter-active, .list-leave-active {
         transition: all 1s;
@@ -149,13 +160,4 @@
         opacity: 0;
     }
 
-    p{
-        display: flex;
-        flex-wrap: wrap;
-        justify-content:center ;
-    }
-    .loading{
-        font-size: 30px;
-        color:rgb(49,103,69);
-    }
 </style>
