@@ -9,7 +9,7 @@
 
                     <div class="modal-body">
                         <slot name="body">
-                            {{detail.description}}
+                            <div v-html="detail.description"></div>
                         </slot>
                     </div>
                 </div>

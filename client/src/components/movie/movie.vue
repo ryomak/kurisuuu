@@ -8,9 +8,8 @@
                 <img class="card-img" :name="item.name" :src="item.imgPath">
                 <p class="card-title">{{item.name}}</p>
             <div class="card-link">
-                <img class="card-link-img" :src="playButton" :href="item.path">
+                <img class="card-link-img" :src="playButton" @click="goMovie(item.path)">
                 <img class="card-link-img" :src="descriptionButton" @click="openModal(item)">
-
             </div>
         </div>
         </transition-group>
@@ -61,7 +60,9 @@
         closeLoading(){
             this.showLoading = false;
         }
-
+        goMovie(url:string){
+            location.href = url;
+        }
     };
 </script>
 
