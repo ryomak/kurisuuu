@@ -5,8 +5,12 @@
                 <p class="card-title">{{item.name}}</p>
             <div class="card-link">
                 <a :href="item.path">Play</a>
+                <a @click="openModal(item)">せつめい</a>
+
             </div>
         </div>
+        <movie-modal v-show="showModal" @close="showModal = false" :detail="modalDetail">
+        </movie-modal>
     </div>
 </template>
 
@@ -15,23 +19,32 @@
     import {Fetch} from "../../api/fetch"
     import MovieModal from "../modal/movie_modal.vue";
     import MovieList  from './../../models/MovieList'
-    @Component
+    @Component({
+        components:{
+            Movie,
+            MovieModal
+        }
+    })
     export default class Movie extends Vue{
         list  = [] as MovieList[];
+        showModal:boolean;
+        modalDetail:MovieList ;
         constructor(){
             super();
             let f = new Fetch;
-            let modal = new MovieModal;
             f.fetchMovie().then((res:any)=>{
                 res.data.map((el:any)=> {
-                    this.list.push(new MovieList(el.name,el.movie_path,el.image_path));
-                })
+                    this.list.push(new MovieList(el.name,el.movie_path,el.image_path,el.description));
+                });
             });
+            this.showModal = false;
+            this.modalDetail = new MovieList("not",".mp4",".png","選択されていません");
         }
-        prev(){}
-        next(){
-            console.log("next");
+        openModal(item:MovieList){
+            this.modalDetail = item;
+            this.showModal = true;
         }
+
     };
 </script>
 
