@@ -1,12 +1,17 @@
 <template>
     <div class="container">
-        <div class="card" v-on:click="goGithub(item.url)" v-for="item in list" >
+        <transition name="fade">
+            <div class="loading" v-show="showLoading">Loading</div>
+        </transition>
+        <transition-group name="list" tag="p">
+        <div class="card" :key="item.name" v-on:click="goGithub(item.url)" v-for="item in list" >
                 <div class="card-title">{{item.name}}</div>
                 <div class="card-foot">
                     <img :src="getIconPath(item.language)">
                     <div class="card-time">{{item.updatedAt}}</div>
                 </div>
         </div>
+        </transition-group>
     </div>
 </template>
 
@@ -17,13 +22,17 @@
     @Component
     export default class Github extends Vue{
         list  = [] as GithubList[];
+        showLoading:boolean;
         constructor(){
             super();
+            this.showLoading = true;
             let f = new Fetch;
             f.fetchGithub().then((res:any)=>{
                 res.data.map((el:any)=> {
                     this.list.push(new GithubList(el.name,el.language,el.html_url,el.updated_at))
                 })
+            }).then(()=>{
+                this.closeLoading();
             });
         }
         getIconPath(name:string){
@@ -44,6 +53,9 @@
         }
         goGithub(url :string){
             location.href = url;
+        }
+        closeLoading(){
+            this.showLoading = false;
         }
 
     };
@@ -97,5 +109,30 @@
 
     html, css{
         touch-action:none;
+    }
+    /*transition*/
+    .list-enter-active, .list-leave-active {
+        transition: all 1s;
+    }
+    .list-enter, .list-leave-to /* .list-leave-active for below version 2.1.8 */ {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    .fade-enter-active, .fade-leave-active {
+        transition: opacity .5s;
+    }
+    .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+        opacity: 0;
+    }
+
+    p{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content:center ;
+    }
+    .loading{
+        font-size: 30px;
+        color:rgb(49,103,69);
+        position: fixed;
     }
 </style>

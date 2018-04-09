@@ -41,7 +41,7 @@
         left: 0;
         width: 100vw;
         height: 100vh;
-        background-color: rgba(256, 256, 256, .6);
+        background-color: rgba(256, 256, 256, .9);
         display: table;
         transition: opacity .3s ease;
     }
@@ -86,15 +86,6 @@
     .modal-default-button {
         float: right;
     }
-
-    /*
-     * The following styles are auto-applied to elements with
-     * transition="modal" when their visibility is toggled
-     * by Vue.js.
-     *
-     * You can easily play with the modal transition by editing
-     * these styles.
-     */
 
     .modal-enter {
         opacity: 0;

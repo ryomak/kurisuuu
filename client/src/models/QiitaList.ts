@@ -11,4 +11,18 @@ export default class QiitaList{
         this.url = url;
         this.createdAt = createdAt;
     }
+    getSummary(){
+            const contents = this.body || ''
+            if (contents.length > 0) {
+                return contents.substring(0, 90) + '...'
+            }
+            return "${this.title} by ryomak"
+    }
+    getTitle(){
+        if (this.title.length > 13) {
+            return this.title.substring(0, 12) + '...'
+        } else {
+            return this.title
+        }
+    }
 }
