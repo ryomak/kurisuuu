@@ -1,1 +1,1 @@
-export const FOOTER_PATH="/static/img/icon/footer/";
+const FOOTER_PATH="/static/img/icon/footer/";

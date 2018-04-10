@@ -1,16 +1,18 @@
 <template>
     <div class="container">
         <div class="head">
-
+            <img class="window-button" :src="singou">
         </div>
         <div class="terminal">
-            <div class="time">Last login:{{timeCommandLineFormat()}} on tty0413</div>
-            <div class="time">Welcome to fish, the friendly interactive shell</div>
-            <div v-for="command in commands">
-                <div ><span class='command'>{{path}}</span>{{command[0]}}</div>
-                <div v-html="command[1]"/>
+            <div class="wrapper">
+                <div class="time">Last login:{{timeCommandLineFormat()}} on tty0413</div>
+                <div class="time">Welcome to fish, the friendly interactive shell</div>
+                <div v-for="command in commands">
+                    <div ><span class='command'>{{path}}</span>{{command[0]}}</div>
+                    <div v-html="command[1]"/>
+                </div>
+                <span class='command'>{{path}}</span>vim hello.go <span class="cursor"></span>
             </div>
-            <span class='command'>{{path}}</span>vim hello.go<span class="cursor"></span>
         </div>
     </div>
 </template>
@@ -19,6 +21,8 @@
     import { Vue, Component, Prop } from "vue-property-decorator";
     @Component
     export default class Readme extends Vue{
+        //const
+        singou:string = "/static/img/icon/readme/singou.png"
         now:Date = new Date();
         path:string = "kurisu@127.0.0.1 ~/develop $ ";
         commands :[string,string][];
@@ -63,26 +67,29 @@
         background: lightgrey;
         border-top-left-radius: 15px;
         border-top-right-radius: 15px;
-        border-right:solid 2px rgb(49,103,69) ;
-        border-left:solid 2px rgb(49,103,69) ;
-        border-top:solid 2px rgb(49,103,69) ;
     }
     .terminal{
         font-size: 23px;
-        line-height: 35px;
+        line-height: 33px;
         background-color: black;
         top:0;
         border-bottom-left-radius: 15px;
         border-bottom-right-radius: 15px;
-        border-left:solid 2px rgb(49,103,69);
-        border-bottom:solid 2px rgb(49,103,69) ;
-        border-right:solid 2px rgb(49,103,69) ;
         width: 75%;
-        height: 650px;
+        height: 680px;
+    }
+    .wrapper{
+        padding-left: 10px;
+        padding-top: 10px;
     }
     .command{
         font-size: 25px;
         color:rgb(49,103,69);
+    }
+    .window-button{
+        width: auto;
+        height: 30px;
+        padding: 10px
     }
     .cursor::after {
         content: "";
