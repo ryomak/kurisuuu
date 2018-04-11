@@ -81,8 +81,9 @@
         height: auto;
     }
     .wrapper{
-        padding-left: 10px;
-        padding-top: 10px;
+        padding-left: 15px;
+        padding-top: 15px;
+        padding-bottom: 15px;
     }
     .command{
         font-size: 25px;

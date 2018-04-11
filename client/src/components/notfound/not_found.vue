@@ -16,8 +16,8 @@
 
 <style scoped>
 .container{
-    width: 75%;
-    height: 500;
+    width: 70%;
+    height: auto;
     padding-top: 50px;
 }
 .not-found{
