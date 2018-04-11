@@ -59,7 +59,7 @@
         justify-content: center;
         flex-wrap: wrap;
         color: white;
-
+        padding-top: 50px;
     }
     .head{
         width: 75%;
@@ -76,7 +76,7 @@
         border-bottom-left-radius: 15px;
         border-bottom-right-radius: 15px;
         width: 75%;
-        height: 680px;
+        height: auto;
     }
     .wrapper{
         padding-left: 10px;
