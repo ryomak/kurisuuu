@@ -22,7 +22,8 @@
     import { Vue, Component, Prop } from "vue-property-decorator";
     import {Fetch} from "../../api/fetch"
     import MovieModal from "../modal/movie_modal.vue";
-    import MovieList  from './../../models/MovieList'
+    import MovieList  from './../../models/MovieList';
+    import * as Const from "../../const/const"
     @Component({
         components:{
             Movie,
@@ -34,10 +35,9 @@
         showModal:boolean;
         showLoading:boolean;
         modalDetail:MovieList ;
-        //const //
-        playButton = "/static/img/icon/movie/play.png";
-        descriptionButton = "/static/img/icon/movie/description.png";
-        //////////
+        c = Const;
+        playButton = this.c.PLAY_BUTTON;
+        descriptionButton = this.c.DESCRIPTION_BUTTON;
         constructor(){
             super();
             this.showModal = false;

@@ -17,12 +17,14 @@
 
 <script lang="ts">
     import { Vue, Component, Prop } from "vue-property-decorator";
-    import {Fetch} from "../../api/fetch"
-    import GithubList from './../../models/GithubList'
+    import {Fetch} from "../../api/fetch";
+    import GithubList from './../../models/GithubList';
+    import * as Const from "../../const/const";
     @Component
     export default class Github extends Vue{
         list  = [] as GithubList[];
         showLoading:boolean;
+        c = Const;
         constructor(){
             super();
             this.showLoading = true;
@@ -36,17 +38,18 @@
             });
         }
         getIconPath(name:string){
+            let githubIcon = this.c.GITHUB_ICON;
            switch (name){
                case "":
-                   return  "/static/img/icon/language/Github.png";
+                   return  githubIcon;
                case "C":
-                   return  "/static/img/icon/language/Github.png";
+                   return  githubIcon;
                case "C++":
-                   return  "/static/img/icon/language/Github.png";
+                   return  githubIcon;
                case "Objective-C":
-                   return  "/static/img/icon/language/Github.png";
+                   return  githubIcon;
                case "Vue":
-                   return "/static/img/icon/language/Github.png";
+                   return githubIcon;
                default:
                    return "/static/img/icon/language/"+name+".png";
            }

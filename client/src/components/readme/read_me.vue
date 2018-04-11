@@ -19,12 +19,14 @@
 
 <script lang="ts">
     import { Vue, Component, Prop } from "vue-property-decorator";
+    import * as Const from "../../const/const"
     @Component
     export default class Readme extends Vue{
+        c = Const;
         //const
-        singou:string = "/static/img/icon/readme/singou.png"
+        singou:string = this.c.SINGOU;
         now:Date = new Date();
-        path:string = "kurisu@127.0.0.1 ~/develop $ ";
+        path:string = this.c.TERMINAL_PATH;
         commands :[string,string][];
         constructor(){
             super();
@@ -48,7 +50,7 @@
             let hour = this.now.getHours()+1;
             let minutes = this.now.getMinutes()+1;
             let seconds = this.now.getSeconds()+1;
-            return week+" "+month+" "+day+" "+hour+":"+minutes+":"+seconds;
+            return week+" "+month+" "+day+" "+year+" "+hour+":"+minutes+":"+seconds;
         }
     };
 </script>
