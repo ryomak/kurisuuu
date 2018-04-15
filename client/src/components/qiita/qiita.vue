@@ -36,6 +36,7 @@
            });
 
        }
+
        goQiita(url:string){
            location.href = url;
        }
@@ -50,7 +51,8 @@
     .container {
         display: flex;
         flex-wrap: wrap;
-        justify-content:center ;
+        justify-content:center;
+        padding-top: 130px;
     }
     .card {
         display: flex;
@@ -93,6 +95,7 @@
         font-size: 14px;
         line-height: 1.5;
         border-top: 2px solid #eee;
+        word-wrap: break-word;
     }
 
     .card-link a:hover {
@@ -123,7 +126,7 @@
         justify-content:center ;
     }
     .loading{
-        font-size: 30px;
+        font-size: 50px;
         color:rgb(49,103,69);
     }
 </style>

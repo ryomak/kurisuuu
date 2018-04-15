@@ -12,7 +12,7 @@ export default class QiitaList{
         this.createdAt = createdAt;
     }
     getSummary(){
-            const contents = this.body || ''
+            const contents = this.body || '';
             if (contents.length > 0) {
                 return contents.substring(0, 90) + '...'
             }

@@ -60,6 +60,7 @@
         box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
         border:solid 2px rgb(49,103,69);
         transition: all .3s ease;
+        word-wrap: break-word;
         font-size: 25px;
         font-family: "Wawati SC",sans-serif;
     }

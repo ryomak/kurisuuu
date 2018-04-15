@@ -61,29 +61,51 @@
         justify-content: center;
         flex-wrap: wrap;
         color: white;
-        padding-top: 50px;
+        padding-top: 130px;
     }
-    .head{
-        width: 75%;
-        height: 50px;
-        background: lightgrey;
-        border-top-left-radius: 15px;
-        border-top-right-radius: 15px;
+    /*雑実装，本当はjsごと変える*/
+    @media (max-width:1000px) {
+        .head{
+            width: 80%;
+            height: 50px;
+            background: lightgrey;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+        .terminal{
+            font-size: 20px;
+            line-height: 30px;
+            background-color: black;
+            top:0;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+            width: 80%;
+            height: auto;
+        }
     }
-    .terminal{
-        font-size: 23px;
-        line-height: 33px;
-        background-color: black;
-        top:0;
-        border-bottom-left-radius: 15px;
-        border-bottom-right-radius: 15px;
-        width: 75%;
-        height: auto;
+
+    @media (min-width:1000px) {
+        .head{
+            width: 60%;
+            height: 50px;
+            background: lightgrey;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+        .terminal{
+            font-size: 23px;
+            line-height: 33px;
+            background-color: black;
+            top:0;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+            width: 60%;
+            height: auto;
+        }
     }
+
     .wrapper{
-        padding-left: 15px;
-        padding-top: 15px;
-        padding-bottom: 15px;
+        padding: 15px;
     }
     .command{
         font-size: 25px;
@@ -94,6 +116,12 @@
         height: 30px;
         padding: 10px
     }
+
+    @media (max-width:1000px) {
+
+    }
+
+
     .cursor::after {
         content: "";
         top: 0;
@@ -119,5 +147,6 @@
         50% { opacity: 0.0; }
         100% { opacity: 1.0; }
     }
+
 
 </style>

@@ -71,6 +71,7 @@
         display: flex;
         flex-wrap: wrap;
         justify-content:center ;
+        padding-top: 130px;
     }
     .card {
         display: flex;
@@ -141,7 +142,7 @@
         justify-content:center ;
     }
     .loading{
-        font-size: 30px;
+        font-size: 50px;
         color:rgb(49,103,69);
     }
 

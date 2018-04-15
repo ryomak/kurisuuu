@@ -1,6 +1,6 @@
 <template>
     <div>
-        <header class="container" v-bind:class="[position>60?'s-header': '']">
+        <header class="container" v-bind:class="[position>0?'s-header': '']">
             <div v-for="(link,index) in links" :key="link.path" >
                 <router-link class="hover"  :to="link.path" v-if="index === getCurrent(path)">{{link.name}}</router-link>
                 <router-link class="menu" :to="link.path" v-else>{{link.name}}</router-link>
@@ -55,16 +55,14 @@
 
 <style scoped>
     .container{
+        position: fixed;
         display: flex;
         justify-content:center;
         width: 100%;
         background-color: white;
     }
     .s-header{
-        position: fixed;
-        background-color: white;
-        transition-delay: 2s;
-        transition-property: position;
+        /*もしheaderしたスクロールで何か必要であれば*/
     }
 
     .menu{
